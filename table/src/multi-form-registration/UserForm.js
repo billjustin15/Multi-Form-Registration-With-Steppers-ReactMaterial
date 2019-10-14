@@ -3,7 +3,9 @@ import FormUserDetails from './FormUserDetails'
 import FormPersonalDetails from './FormPersonalDetails'
 import Confirm from './Confirm'
 import Success from './Success'
-
+import Stepper from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import StepLabel from '@material-ui/core/StepLabel';
 
 export class UserForm extends Component {
     state = {
@@ -37,6 +39,11 @@ export class UserForm extends Component {
             step: step - 1
         })
     }
+
+    // stepper 
+    getSteps = () => {
+        return ['Registration 1', 'Registration 2', 'Review', 'Verification']
+    }
     
     // handle field change
     handleChange = input => e => {
@@ -50,6 +57,9 @@ export class UserForm extends Component {
         const { firstname, lastname, email, age, username, password } = this.state
         // we need to be able to pass these fields to the components as props as 'values'
         const values = { firstname, lastname, email, age, username, password }
+
+        // stepper
+       
 
         switch(step) {
             case 1:
